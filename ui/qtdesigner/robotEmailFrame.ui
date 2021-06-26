@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>emailFrame</class>
+ <widget class="QFrame" name="emailFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>868</width>
+    <height>509</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="refrshTeachersButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 64, 77);</string>
+         </property>
+         <property name="text">
+          <string>Refresh</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="attachmentsButton">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 64, 77);</string>
+         </property>
+         <property name="text">
+          <string>Attachments</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sendButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 64, 77);</string>
+         </property>
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="browseBar">
+       <item>
+        <widget class="QLabel" name="browseLabel">
+         <property name="styleSheet">
+          <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(179, 0, 2);</string>
+         </property>
+         <property name="text">
+          <string>Browse:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="browseInput">
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255);
+border: 2px solid red; </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QListView" name="teachersListView">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid red; </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="emailCompose">
+     <item>
+      <widget class="QLabel" name="subjectLabel">
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(179, 0, 2);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduce a title for your problem as mail subject:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="subjectInput">
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255);
+border: 2px solid red; </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="bodyLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(179, 0, 2);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduce here the text describing the problem &lt;/p&gt;&lt;p&gt;you want to adress to a teacher:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="bodyInput">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255);
+border: 2px solid red; </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="emailTeacherLabel">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#cb2d45;&quot;&gt;E-mail a Teacher&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AttachDialog</class>
+ <widget class="QDialog" name="AttachDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Attachments</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../images/images.qrc">
+    <normaloff>:/icons/export.png</normaloff>:/icons/export.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 64, 77);</string>
+       </property>
+       <property name="text">
+        <string>Add</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 64, 77);</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 64, 77);</string>
+       </property>
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QListView" name="filesListView"/>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../images/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

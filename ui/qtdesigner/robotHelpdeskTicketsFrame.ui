@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>helpDeskFrame</class>
+ <widget class="QFrame" name="helpDeskFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="helpdeskLabel">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#cb2d45;&quot;&gt;HelpDesk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="logoHelpLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/helpdesk_13.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="subjectLabel">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(168, 11, 21);
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Introduce a name for your ticket:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="subjectInput">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(255, 255, 255);
+border: 2px solid red; 
+</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="newTicketLabel">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(168, 11, 21);
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Write down below the text of your new ticket:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="newTicketTextBox">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(255, 255, 255);
+border: 2px solid red; 
+</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="attachButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(168, 11, 21);
+color: white;</string>
+       </property>
+       <property name="text">
+        <string>Attachments</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="finishButton">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(168, 11, 21);
+color: white;</string>
+       </property>
+       <property name="text">
+        <string>Finish ticket</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCommandLinkButton" name="oldTicketsButton">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(168, 11, 21);
+background-color: rgb(255, 255, 255);
+</string>
+     </property>
+     <property name="text">
+      <string>Or go to see the status of your older tickets</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../images/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

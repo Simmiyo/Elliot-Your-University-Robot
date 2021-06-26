@@ -1,0 +1,10 @@
+START = 'start'
+COURSES = 'courses'
+HELP = 'help'
+PAPERWORK = 'paperwork'
+EMAIL = 'email'
+HELPDESK = 'helpDesk'
+MATERIALS = 'materials'
+GRADES = 'grades'
+OLD_TICKETS = 'oldTickets'
+
