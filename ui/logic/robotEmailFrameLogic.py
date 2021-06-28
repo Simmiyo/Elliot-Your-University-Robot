@@ -102,8 +102,8 @@ class EmailFrameLogic(QFrame, Ui_emailFrame):
     def refreshTeachers(self):
         self.setState(False)
         robotArgs = {"robotType": "refresh-teachers",
-                     "mathTeachersStorePath": abspath(r'.\data\DepMate.csv'),
-                     "infoTeachersStorePath": abspath(r'.\data\DepInfo.csv')}
+                     "mathTeachersStorePath": r'"{}"'.format(abspath(r'.\data\DepMate.csv')),
+                     "infoTeachersStorePath": r'"{}"'.format(abspath(r'.\data\DepInfo.csv'))}
         try:
             self.thread = QtCore.QThread()
             self.worker = CallUipathRobotWorker(robotArgs)

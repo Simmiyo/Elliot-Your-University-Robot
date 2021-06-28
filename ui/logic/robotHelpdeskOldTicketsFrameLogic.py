@@ -2,7 +2,7 @@ from os.path import abspath
 from pathlib import Path
 
 import pandas as pd
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QFrame, QHeaderView, QMessageBox
 
 from ui.design.robotHelpdeskOldTicketsFrame import Ui_oldTicketsFrame
@@ -75,13 +75,14 @@ class HelpdeskOldTicketsFrameLogic(QFrame, Ui_oldTicketsFrame):
         else:
             _ = QMessageBox.warning(self, "Error!", "The tickets could not be extracted due to certain problems with "
                                                     "the UiPath robot!")
+            self.setState(True)
 
     def refreshTickets(self):
         self.setState(False)
         robotArgs = {"robotType": "helpDesk",
                      "helpType": "check",
-                     "openTicketsFile": abspath(r'.\data\OpenTickets.csv'),
-                     "closedTicketsFile": abspath(r'.\data\ClosedTickets.csv')}
+                     "openTicketsFile": r'"{}"'.format(abspath(r'.\data\OpenTickets.csv')),
+                     "closedTicketsFile": r'"{}"'.format(abspath(r'.\data\ClosedTickets.csv'))}
         try:
             self.thread = QtCore.QThread()
             self.worker = CallUipathRobotWorker(robotArgs)

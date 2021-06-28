@@ -201,12 +201,13 @@ class MaterialsFrameLogic(QFrame, Ui_materialsFrame):
                 destinationPath = QtWidgets.QFileDialog.getExistingDirectory(self, 'Please select destination folder!')
                 tokenFile = r'"{}"'.format(abspath(r".\data\token.txt"))
                 coursesFile = r'"{}"'.format(abspath(r".\data\coursesMoodle.csv"))
+                courseName = r'"{}"'.format(courseName)
             else:
                 coursesFile = r'"{}"'.format(abspath(r".\data\coursesTeams.csv"))
             if platform != 'Moodle' or destinationPath != "":
-                robotArgs = {"robotType": "get-materials", "platform": platform, "tokenFile": tokenFile,
-                             "courseName": courseName, "coursesFile": coursesFile,
-                             "materialsDestination": destinationPath}
+                robotArgs = {'robotType': 'get-materials', 'platform': platform, 'tokenFile': tokenFile,
+                             'courseName': courseName, 'coursesFile': coursesFile,
+                             'materialsDestination': destinationPath}
                 try:
                     self.thread = QtCore.QThread()
                     self.worker = CallUipathRobotWorker(robotArgs)
