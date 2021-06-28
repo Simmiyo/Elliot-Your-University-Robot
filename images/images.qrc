@@ -1,0 +1,25 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>helpdesk_13.png</file>
+    <file>grades_30x30.png</file>
+    <file alias="smallEmailIcon">email_small.png</file>
+    <file>gradesicon.png</file>
+    <file>materialsicon.png</file>
+    <file>backicon.png</file>
+    <file>email.png</file>
+    <file>helpdesk.png</file>
+    <file>import-removebg-preview.png</file>
+    <file>rsz_screenshot_2021-03-15_171208-removebg-preview.png</file>
+    <file>export-removebg-preview.png</file>
+    <file>export.png</file>
+    <file>import.png</file>
+    <file>robo.png</file>
+    <file>help.png</file>
+    <file>grades-removebg-preview.png</file>
+    <file>papers.png</file>
+    <file>bot-icon.png</file>
+  </qresource>
+  <qresource prefix="background">
+    <file>robo2.png</file>
+  </qresource>
+</RCC>
