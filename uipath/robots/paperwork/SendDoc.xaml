@@ -1,0 +1,420 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendDoc" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="docPath" Type="InArgument(x:String)" />
+    <x:Property Name="needsFill" Type="InArgument(x:String)" />
+    <x:Property Name="docName" Type="InArgument(x:String)" />
+    <x:Property Name="robotSuccess" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2100,2882.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendDoc_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.Form.Activities</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="2110.4,2817.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="recipientAddress">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">simona.pop@my.fmi.unibuc.ro</Literal>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2068.8,2724.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="SendDoc" sap:VirtualizedContainerService.HintSize="1595.2,3836.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="emailText" />
+            <Variable x:TypeArguments="x:String" Name="studentEmail" />
+            <Variable x:TypeArguments="x:String" Name="surname" />
+            <Variable x:TypeArguments="x:String" Name="firstname" />
+            <Variable x:TypeArguments="x:String" Name="grupa" />
+            <Variable x:TypeArguments="x:String" Name="specialization" />
+            <Variable x:TypeArguments="x:String" Name="univYear" />
+            <Variable x:TypeArguments="x:String" Name="year" />
+            <Variable x:TypeArguments="x:String" Name="studyForm" />
+            <Variable x:TypeArguments="x:String" Name="domain" />
+            <Variable x:TypeArguments="x:String" Name="financeType" />
+            <Variable x:TypeArguments="x:String" Name="phone" />
+            <Variable x:TypeArguments="x:String" Name="beginning" />
+            <Variable x:TypeArguments="x:String" Name="ending" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1553.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="robots\utils\ExtractStudentData.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="surname">[surname]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="firstname">[firstname]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="grupa">[grupa]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="specialization">[specialization]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="univYear">[univYear]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="year">[year]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="studentEmail">[studentEmail]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="financeType">[financeType]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="studyForm">[studyForm]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="domain">[domain]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="phone">[phone]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="beginning">[beginning]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="endYear">[ending]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Assign sap:VirtualizedContainerService.HintSize="1553.6,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[emailText]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Bună ziua!" + Environment.NewLine + "Sunt "+ surname + " " + firstname +  ", student(ă) în anul " + year + " la Facultatea de Matematică și Informatică, specializarea " + specialization + ", grupa " + grupa + ". Atașez aici " + docName +  "." +  Environment.NewLine + "Mulțumesc!"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[needsFill.Equals(&quot;true&quot;)]" sap:VirtualizedContainerService.HintSize="1553.6,3390.4" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="Sequence - Fill Docmunet" sap:VirtualizedContainerService.HintSize="1134.4,3231.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="saveDoc" />
+                  <Variable x:TypeArguments="x:String" Name="resultString" />
+                  <Variable x:TypeArguments="x:String" Name="pdfPath" />
+                  <Variable x:TypeArguments="x:Boolean" Default="True" Name="tryFill" />
+                  <Variable x:TypeArguments="x:Boolean" Name="goodJob" />
+                  <Variable x:TypeArguments="x:String" Default="./temp/" Name="tempPath" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InterruptibleDoWhile Condition="[tryFill]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1092.8,527.2" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                  <ui:InterruptibleDoWhile.Body>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,360" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="robots\utils\FillDocument.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="docName">[docName]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="surname">[surname]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="firstname">[firstname]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="phone">[phone]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="studentEmail">[studentEmail]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="grupa">[grupa]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="specialization">[specialization]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="domain">[domain]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="year">[year]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="univYear">[univYear]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="studyForm">[studyForm]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="financeType">[financeType]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="ending">[ending]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="docPath">[docPath]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:InvokeWorkflowFile>
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="robots\utils\CheckFilledDocument.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="docName">[docName]</InArgument>
+                          <InOutArgument x:TypeArguments="x:Boolean" x:Key="tryFill">[tryFill]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Boolean" x:Key="goodJob">[goodJob]</InOutArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </ui:InterruptibleDoWhile.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InterruptibleDoWhile>
+                <If Condition="[goodJob]" sap:VirtualizedContainerService.HintSize="1092.8,2450.4" sap2010:WorkflowViewState.IdRef="If_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Sequence - Done a good job" sap:VirtualizedContainerService.HintSize="715.2,2291.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Boolean" Name="dismissed" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="673.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[pdfPath]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="673.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="robots\help\SendEmail.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="studentEmail">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="studentEmail" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="attachments">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="pdfPath" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="emailBody">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailText" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="emailSubject">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="docName" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">
+                            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="robotSuccess" />
+                          </OutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="recipientAddress">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="recipientAddress" />
+                          </InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="673.6,295.2" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Do you wish to keep the completed document?" OptionsString="Yes;No" Title="Keep filled up document">
+                        <ui:InputDialog.Result>
+                          <OutArgument x:TypeArguments="x:String">[saveDoc]</OutArgument>
+                        </ui:InputDialog.Result>
+                      </ui:InputDialog>
+                      <If Condition="[saveDoc.Equals(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="673.6,1488.8" sap2010:WorkflowViewState.IdRef="If_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <ufa:FormActivity FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" Dismissed="[dismissed]" DisplayName="Create Form" FormFieldsOutputData="[resultString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Select in which format(s) you want your document saved:&quot;,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;Word&quot;,&quot;value&quot;:&quot;word&quot;,&quot;shortcut&quot;:&quot;&quot;},{&quot;label&quot;:&quot;PDF&quot;,&quot;value&quot;:&quot;pdf&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;docType&quot;,&quot;type&quot;:&quot;selectboxes&quot;,&quot;input&quot;:true,&quot;inputType&quot;:&quot;checkbox&quot;,&quot;defaultValue&quot;:{&quot;word&quot;:false,&quot;pdf&quot;:false}},{&quot;label&quot;:&quot;Choose the destination folder:&quot;,&quot;customClass&quot;:&quot;folderPath&quot;,&quot;key&quot;:&quot;destFolder&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="638.4,1309.6" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                            <ufa:FormActivity.Body>
+                              <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="601.6,1183.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="njl:JObject" Name="resultObject" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If Condition="[dismissed = False]" sap:VirtualizedContainerService.HintSize="560,1090.4" sap2010:WorkflowViewState.IdRef="If_9">
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="524.8,911.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[resultObject]" JsonString="[resultString]" />
+                                        <If Condition="[resultObject(&quot;docType&quot;)(&quot;word&quot;).ToString.Equals(&quot;True&quot;)]" sap:VirtualizedContainerService.HintSize="483.2,339.2" sap2010:WorkflowViewState.IdRef="If_3">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[resultObject(&quot;destFolder&quot;).ToString]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[tempPath + docName + &quot;.docx&quot;]" />
+                                          </If.Then>
+                                        </If>
+                                        <If Condition="[resultObject(&quot;docType&quot;)(&quot;pdf&quot;).ToString.Equals(&quot;True&quot;)]" sap:VirtualizedContainerService.HintSize="483.2,339.2" sap2010:WorkflowViewState.IdRef="If_4">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[resultObject(&quot;destFolder&quot;).ToString]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[pdfPath]" />
+                                          </If.Then>
+                                        </If>
+                                      </Sequence>
+                                    </If.Then>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </ufa:FormActivity.Body>
+                            <ufa:FormActivity.DelayBody>
+                              <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                                <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                              </ActivityAction>
+                            </ufa:FormActivity.DelayBody>
+                            <ufa:FormActivity.FormFieldsCollection>
+                              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                            </ufa:FormActivity.FormFieldsCollection>
+                          </ufa:FormActivity>
+                        </If.Then>
+                      </If>
+                      <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="673.6,80.8" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[pdfPath]" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Allright! I will not send the document anymore.&quot;]" />
+                  </If.Else>
+                </If>
+                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="1092.8,80.8" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[tempPath + docName + &quot;.docx&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="robots\help\SendEmail.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="studentEmail">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="studentEmail" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="attachments">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="docPath" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="emailBody">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailText" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="emailSubject">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="docName" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">
+                      <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="robotSuccess" />
+                    </OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="recipientAddress">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="recipientAddress" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign sap:VirtualizedContainerService.HintSize="1553.6,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[robotSuccess]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[robotSuccess]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2035.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="robots\utils\LogError.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="errorMessage" xml:space="preserve">["Could not send document due to : "  + Exception.Message.ToString + " at " + Exception.Source.ToString]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

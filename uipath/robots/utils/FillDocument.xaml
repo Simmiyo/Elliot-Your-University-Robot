@@ -1,0 +1,713 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FillDocument" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="docName" Type="InArgument(x:String)" />
+    <x:Property Name="surname" Type="InArgument(x:String)" />
+    <x:Property Name="firstname" Type="InArgument(x:String)" />
+    <x:Property Name="phone" Type="InArgument(x:String)" />
+    <x:Property Name="studentEmail" Type="InArgument(x:String)" />
+    <x:Property Name="grupa" Type="InArgument(x:String)" />
+    <x:Property Name="specialization" Type="InArgument(x:String)" />
+    <x:Property Name="domain" Type="InArgument(x:String)" />
+    <x:Property Name="year" Type="InArgument(x:String)" />
+    <x:Property Name="univYear" Type="InArgument(x:String)" />
+    <x:Property Name="studyForm" Type="InArgument(x:String)" />
+    <x:Property Name="financeType" Type="InArgument(x:String)" />
+    <x:Property Name="ending" Type="InArgument(x:String)" />
+    <x:Property Name="docPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>960,610.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>FillDocument_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Form.Activities</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="478.4,384" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,291.2" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+      <TryCatch.Try>
+        <Flowchart DisplayName="FillDocument" sap:VirtualizedContainerService.HintSize="824,721.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="x:String" Default="./temp/" Name="tempPath" />
+            <Variable x:TypeArguments="x:String" Name="tempFile" />
+          </Flowchart.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <av:Point x:Key="ShapeLocation">620,2.4</av:Point>
+              <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">650,77.6 650,107.6 590,107.6 590,17.6 410,17.6 410,35.6</av:PointCollection>
+              <x:Double x:Key="Width">790</x:Double>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Double x:Key="Height">684.4</x:Double>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID6</x:Reference>
+          </Flowchart.StartNode>
+          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID5" DisplayName="Flow Switch" Expression="[docName.Trim]" sap:VirtualizedContainerService.HintSize="70.4,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">434.8,226.4</av:Point>
+                <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+                <av:PointCollection x:Key="Adeverinta-licenta-templateConnector">354.8,208.2 324.8,208.2 324.8,180 200,180</av:PointCollection>
+                <av:PointCollection x:Key="Cerere de EchivalareConnector">434.8,291.8 100,291.8 100,375.6</av:PointCollection>
+                <av:PointCollection x:Key="Cerere Aprobare LicențăConnector">470,313.6 470,343.6 300,343.6 300,515.6</av:PointCollection>
+                <av:PointCollection x:Key="Declarație Autenticitate Lucrare LicențăConnector">487.6,313.6 487.6,440 540,440</av:PointCollection>
+                <av:PointCollection x:Key="Fișă de LichidareConnector">505.2,291.8 535.2,291.8 535.2,200 580,200</av:PointCollection>
+                <av:PointCollection x:Key="Adeverință Cercetare Elaborare LicențăConnector">434.8,270 100,270 100,74.4</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowStep x:Key="Adeverință Cercetare Elaborare Licență" x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">0,5.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="FillAdevLic" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="formString" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form" FormFieldsOutputData="[formString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Write your thesis coordinator's full name and status:&quot;,&quot;placeholder&quot;:&quot;e.g. Conf. dr. Hector Sorescu &quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;teacher&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write your thesis title:&quot;,&quot;placeholder&quot;:&quot;e.g. Teorema Daniell&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;thesisTitle&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Attach here your coordinator's signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;signaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="587.2,2755.2" sap2010:WorkflowViewState.IdRef="FormActivity_7" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                  <ufa:FormActivity.Body>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="550.4,2628.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="njl:JObject" Name="formObject" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_7" JsonObject="[formObject]" JsonString="[formString]" />
+                        <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tempFile]" sap:VirtualizedContainerService.HintSize="508.8,2436" sap2010:WorkflowViewState.IdRef="WordApplicationScope_7">
+                          <p:WordApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,2326.4" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="finalFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_65" Replace="[formObject(&quot;teacher&quot;).ToString]" ReplaceAll="True" Search="&lt;NUME-PROF&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_66" Replace="[surname + &quot; &quot; + firstname]" ReplaceAll="True" Search="&lt;NUME&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_67" Replace="[univYear]" ReplaceAll="True" Search="&lt;AN&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_68" Replace="[domain]" ReplaceAll="True" Search="&lt;DOMENIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_69" Replace="[specialization]" ReplaceAll="True" Search="&lt;SPECIALIZARE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_70" Replace="[studyForm]" ReplaceAll="True" Search="&lt;FORMAINV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_71" Replace="[grupa]" ReplaceAll="True" Search="&lt;GRUPA&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_72" Replace="[formObject(&quot;thesisTitle&quot;).ToString]" ReplaceAll="True" Search="&lt;TITLU-LIC&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_73" Replace="[DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="&lt;DATA&gt;" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_10" PictureAltText="Signature" PicturePath="[formObject(&quot;signaturePath&quot;).ToString]" />
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[finalFile]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[finalFile]" sap:VirtualizedContainerService.HintSize="433.6,111.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_7" />
+                              </Sequence>
+                            </ActivityAction>
+                          </p:WordApplicationScope.Body>
+                        </p:WordApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ufa:FormActivity.Body>
+                  <ufa:FormActivity.DelayBody>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_7" />
+                    </ActivityAction>
+                  </ufa:FormActivity.DelayBody>
+                  <ufa:FormActivity.FormFieldsCollection>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ufa:FormActivity.FormFieldsCollection>
+                </ufa:FormActivity>
+              </Sequence>
+            </FlowStep>
+            <FlowStep x:Key="Cerere Aprobare Licență" x:Name="__ReferenceID2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,515.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="FillCerLic" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="formString" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form" FormFieldsOutputData="[formString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Write your thesis coordinator's full name and status:&quot;,&quot;placeholder&quot;:&quot;e.g. Conf. dr. Hector Sorescu &quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;teacher&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write your thesis title:&quot;,&quot;placeholder&quot;:&quot;e.g. Teorema Daniell&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;thesisTitle&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Select the session you want to take part in:&quot;,&quot;widget&quot;:&quot;choicesjs&quot;,&quot;tableView&quot;:true,&quot;data&quot;:{&quot;values&quot;:[{&quot;label&quot;:&quot;Iunie&quot;,&quot;value&quot;:&quot;iunie&quot;},{&quot;label&quot;:&quot;Septembrie&quot;,&quot;value&quot;:&quot;septembrie&quot;}]},&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;session&quot;,&quot;type&quot;:&quot;select&quot;,&quot;indexeddb&quot;:{&quot;filter&quot;:{}},&quot;input&quot;:true},{&quot;label&quot;:&quot;Attach here your signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;studentSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;label&quot;:&quot;Attach here your coordinator's signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;teacherSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="236.8,195.2" sap2010:WorkflowViewState.IdRef="FormActivity_9" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                  <ufa:FormActivity.Body>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="550.4,3112.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="njl:JObject" Name="formObject" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_9" JsonObject="[formObject]" JsonString="[formString]" />
+                        <Assign sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[tempFile]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[tempPath + docName + ".docx"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tempFile]" sap:VirtualizedContainerService.HintSize="508.8,2820" sap2010:WorkflowViewState.IdRef="WordApplicationScope_9">
+                          <p:WordApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,2710.4" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.pdf&quot;]" Name="finalFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_86" Replace="[formObject(&quot;teacher&quot;).ToString]" ReplaceAll="True" Search="&lt;NUME-PROF&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_87" Replace="[surname + &quot; &quot; + firstname]" ReplaceAll="True" Search="&lt;NUME&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_88" Replace="[univYear]" ReplaceAll="True" Search="&lt;AN-UNIV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_89" Replace="[domain]" ReplaceAll="True" Search="&lt;DOMENIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_90" Replace="[specialization]" ReplaceAll="True" Search="&lt;SPECIALIZARE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_91" Replace="[studyForm]" ReplaceAll="True" Search="&lt;FORMAINV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_92" Replace="[grupa]" ReplaceAll="True" Search="&lt;GRUPA&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_93" Replace="[formObject(&quot;thesisTitle&quot;).ToString]" ReplaceAll="True" Search="&lt;TITLU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_94" Replace="[formObject(&quot;session&quot;).ToString]" ReplaceAll="True" Search="&lt;SESIUNE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_95" Replace="[DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="&lt;DATA&gt;" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_13" PictureAltText="Student-Signature" PicturePath="[formObject(&quot;studentSignaturePath&quot;).ToString]" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_14" PictureAltText="Teacher-Signature" PicturePath="[formObject(&quot;teacherSignaturePath&quot;).ToString]" />
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[finalFile]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[finalFile]" sap:VirtualizedContainerService.HintSize="433.6,111.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_9" />
+                              </Sequence>
+                            </ActivityAction>
+                          </p:WordApplicationScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </p:WordApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ufa:FormActivity.Body>
+                  <ufa:FormActivity.DelayBody>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_9" />
+                    </ActivityAction>
+                  </ufa:FormActivity.DelayBody>
+                  <ufa:FormActivity.FormFieldsCollection>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ufa:FormActivity.FormFieldsCollection>
+                </ufa:FormActivity>
+              </Sequence>
+            </FlowStep>
+            <FlowStep x:Key="Declarație Autenticitate Lucrare Licență" x:Name="__ReferenceID3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">540,405.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="FillDecLic" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.docx&quot;]" Name="tempFile" />
+                  <Variable x:TypeArguments="x:String" Default="./temp/" Name="tempPath" />
+                  <Variable x:TypeArguments="x:String" Name="formString" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form" FormFieldsOutputData="[formString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Select the session you take part in:&quot;,&quot;widget&quot;:&quot;choicesjs&quot;,&quot;tableView&quot;:true,&quot;data&quot;:{&quot;values&quot;:[{&quot;label&quot;:&quot;Iunie&quot;,&quot;value&quot;:&quot;iunie&quot;},{&quot;label&quot;:&quot;Septembrie&quot;,&quot;value&quot;:&quot;septembrie&quot;}]},&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;session&quot;,&quot;type&quot;:&quot;select&quot;,&quot;indexeddb&quot;:{&quot;filter&quot;:{}},&quot;input&quot;:true},{&quot;label&quot;:&quot;Attach here your signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;studentSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;label&quot;:&quot;Attach here your coordinator's signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;teacherSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="236.8,195.2" sap2010:WorkflowViewState.IdRef="FormActivity_10" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                  <ufa:FormActivity.Body>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="550.4,1884" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="njl:JObject" Name="formObject" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_10" JsonObject="[formObject]" JsonString="[formString]" />
+                        <Assign sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="Assign_25">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[tempFile]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[tempPath + docName + ".docx"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tempFile]" sap:VirtualizedContainerService.HintSize="508.8,1591.2" sap2010:WorkflowViewState.IdRef="WordApplicationScope_10">
+                          <p:WordApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,1481.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.pdf&quot;]" Name="finalFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_96" Replace="[surname + &quot; &quot; + firstname]" ReplaceAll="True" Search="&lt;NUME&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_97" Replace="[specialization]" ReplaceAll="True" Search="&lt;SPECIALIZARE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_98" Replace="[formObject(&quot;session&quot;).ToString]" ReplaceAll="True" Search="&lt;SESIUNE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_99" Replace="[DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="&lt;DATA&gt;" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_15" PictureAltText="Student-Signature" PicturePath="[formObject(&quot;studentSignaturePath&quot;).ToString]" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_16" PictureAltText="Teacher-Signature" PicturePath="[formObject(&quot;teacherSignaturePath&quot;).ToString]" />
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[finalFile]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[finalFile]" sap:VirtualizedContainerService.HintSize="433.6,111.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_10" />
+                              </Sequence>
+                            </ActivityAction>
+                          </p:WordApplicationScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </p:WordApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ufa:FormActivity.Body>
+                  <ufa:FormActivity.DelayBody>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_10" />
+                    </ActivityAction>
+                  </ufa:FormActivity.DelayBody>
+                  <ufa:FormActivity.FormFieldsCollection>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ufa:FormActivity.FormFieldsCollection>
+                </ufa:FormActivity>
+              </Sequence>
+            </FlowStep>
+            <FlowStep x:Key="Fișă de Lichidare" x:Name="__ReferenceID4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">580,165.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="FillFisaLich" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.docx&quot;]" Name="tempFile" />
+                  <Variable x:TypeArguments="x:String" Default="./temp/" Name="tempPath" />
+                  <Variable x:TypeArguments="x:String" Name="formString" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form" FormFieldsOutputData="[formString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Select the session you took part in:&quot;,&quot;widget&quot;:&quot;choicesjs&quot;,&quot;tableView&quot;:true,&quot;data&quot;:{&quot;values&quot;:[{&quot;label&quot;:&quot;Iunie&quot;,&quot;value&quot;:&quot;iunie&quot;},{&quot;label&quot;:&quot;Septembrie&quot;,&quot;value&quot;:&quot;septembrie&quot;}]},&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;session&quot;,&quot;type&quot;:&quot;select&quot;,&quot;indexeddb&quot;:{&quot;filter&quot;:{}},&quot;input&quot;:true},{&quot;label&quot;:&quot;Select your birthdate:&quot;,&quot;format&quot;:&quot;dd-MM-yyyy&quot;,&quot;tableView&quot;:false,&quot;enableMinDateInput&quot;:false,&quot;datePicker&quot;:{&quot;disableWeekends&quot;:false,&quot;disableWeekdays&quot;:false},&quot;enableMaxDateInput&quot;:false,&quot;key&quot;:&quot;birthdate&quot;,&quot;type&quot;:&quot;datetime&quot;,&quot;input&quot;:true,&quot;widget&quot;:{&quot;type&quot;:&quot;calendar&quot;,&quot;displayInTimezone&quot;:&quot;viewer&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;useLocaleSettings&quot;:false,&quot;allowInput&quot;:true,&quot;mode&quot;:&quot;single&quot;,&quot;enableTime&quot;:true,&quot;noCalendar&quot;:false,&quot;format&quot;:&quot;dd-MM-yyyy&quot;,&quot;hourIncrement&quot;:1,&quot;minuteIncrement&quot;:1,&quot;time_24hr&quot;:false,&quot;minDate&quot;:null,&quot;disableWeekends&quot;:false,&quot;disableWeekdays&quot;:false,&quot;maxDate&quot;:null}},{&quot;label&quot;:&quot;Writhe the name of the city you were born in:&quot;,&quot;placeholder&quot;:&quot;e.g. București&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;locNastere&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write the name of the county you were born in:&quot;,&quot;placeholder&quot;:&quot;e.g. Sector 3&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;judNastere&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write your personal identification number (CNP):&quot;,&quot;placeholder&quot;:&quot;S-AA-LL-ZZ-JJ-NNN-C&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;cnp&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Current city: &quot;,&quot;placeholder&quot;:&quot;e.g. Brașov&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;locDomiciliu&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Current county:&quot;,&quot;placeholder&quot;:&quot;e.g. Brașov&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;judDomiciliu&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Street (name and number):&quot;,&quot;placeholder&quot;:&quot;e.g. Str Sforii nr 80&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;street&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Building:&quot;,&quot;placeholder&quot;:&quot;e.g. R100&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;building&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Entrance:&quot;,&quot;placeholder&quot;:&quot;e.g. B&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;entrance&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Floor number:&quot;,&quot;placeholder&quot;:&quot;e.g. 8&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;floor&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Apartment:&quot;,&quot;placeholder&quot;:&quot;e.g. 82&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;apartment&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Attach here your signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;studentSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="587.2,5822.4" sap2010:WorkflowViewState.IdRef="FormActivity_11" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                  <ufa:FormActivity.Body>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="550.4,5696" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="njl:JObject" Name="formObject" />
+                          <Variable x:TypeArguments="s:DateTime" Name="birthDate" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_11" JsonObject="[formObject]" JsonString="[formString]" />
+                        <Assign sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[tempFile]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[tempPath + docName + ".docx"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:DateTime">[birthDate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse(formObject("birthdate").ToString)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tempFile]" sap:VirtualizedContainerService.HintSize="508.8,5303.2" sap2010:WorkflowViewState.IdRef="WordApplicationScope_11">
+                          <p:WordApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,5193.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.pdf&quot;]" Name="finalFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_100" Replace="[surname + &quot; &quot; + firstname]" ReplaceAll="True" Search="&lt;NUME&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_101" Replace="[ending]" ReplaceAll="True" Search="&lt;PROMOTIE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_102" Replace="[formObject(&quot;session&quot;).ToString]" ReplaceAll="True" Search="&lt;SESIUNE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_103" Replace="[formObject(&quot;cnp&quot;).ToString]" ReplaceAll="True" Search="&lt;CNP&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_104" Replace="[birthDate.ToString(&quot;dd&quot;)]" ReplaceAll="True" Search="&lt;ZI-NASTERE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_105" Replace="[birthDate.ToString(&quot;MM&quot;)]" ReplaceAll="True" Search="&lt;LUNA-NASTERE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_106" Replace="[birthDate.ToString(&quot;yyyy&quot;)]" ReplaceAll="True" Search="&lt;AN-NASTERE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_107" Replace="[formObject(&quot;locNastere&quot;).ToString]" ReplaceAll="True" Search="&lt;LOC-NASTERE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_108" Replace="[formObject(&quot;judNastere&quot;).ToString]" ReplaceAll="True" Search="&lt;JUD-NASTERE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_109" Replace="[formObject(&quot;locDomiciliu&quot;).ToString]" ReplaceAll="True" Search="&lt;LOC-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_110" Replace="[formObject(&quot;judDomiciliu&quot;).ToString]" ReplaceAll="True" Search="&lt;JUD-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_111" Replace="[formObject(&quot;street&quot;).ToString]" ReplaceAll="True" Search="&lt;STR-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_112" Replace="[formObject(&quot;building&quot;).ToString]" ReplaceAll="True" Search="&lt;BL-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_113" Replace="[formObject(&quot;entrance&quot;).ToString]" ReplaceAll="True" Search="&lt;SC-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_114" Replace="[formObject(&quot;floor&quot;).ToString]" ReplaceAll="True" Search="&lt;ET-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_115" Replace="[formObject(&quot;apartment&quot;).ToString]" ReplaceAll="True" Search="&lt;AP-DOMICILIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_116" Replace="[DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="&lt;DATA&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_117" Replace="[studentEmail]" ReplaceAll="True" Search="&lt;EMAIL&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_118" Replace="[domain]" ReplaceAll="True" Search="&lt;DOMENIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_119" Replace="[specialization]" ReplaceAll="True" Search="&lt;SPECIALIZARE&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_120" Replace="[studyForm]" ReplaceAll="True" Search="&lt;FORMA-INV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_121" Replace="[financeType]" ReplaceAll="True" Search="&lt;FORMA-FIN&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_122" Replace="[phone]" ReplaceAll="True" Search="&lt;TELEFON&gt;" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_17" PictureAltText="Signature" PicturePath="[formObject(&quot;studentSignaturePath&quot;).ToString]" />
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[finalFile]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[finalFile]" sap:VirtualizedContainerService.HintSize="433.6,111.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_11" />
+                              </Sequence>
+                            </ActivityAction>
+                          </p:WordApplicationScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </p:WordApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ufa:FormActivity.Body>
+                  <ufa:FormActivity.DelayBody>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_11" />
+                    </ActivityAction>
+                  </ufa:FormActivity.DelayBody>
+                  <ufa:FormActivity.FormFieldsCollection>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ufa:FormActivity.FormFieldsCollection>
+                </ufa:FormActivity>
+              </Sequence>
+            </FlowStep>
+            <FlowStep x:Key="Cerere de Echivalare" x:Name="__ReferenceID1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">0,375.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="FillCerEchiv" sap:VirtualizedContainerService.HintSize="628.8,3741.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="formString" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form" FormFieldsOutputData="[formString]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Write your teacher's full name:&quot;,&quot;placeholder&quot;:&quot;e.g. Zelda Sonov&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;teacher&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write the name of the subject you have already studied:&quot;,&quot;placeholder&quot;:&quot;e.g. Geometrie diferențială&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;mat1&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write the name of the subject you plan to replace:&quot;,&quot;placeholder&quot;:&quot;e.g. Geometrie computațională&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;mat2&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Write the grade included in the replacement:&quot;,&quot;placeholder&quot;:&quot;e.g. 10&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;grade&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Attach here your signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;studentSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;label&quot;:&quot;Attach here your teacher's signature:&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;teacherSignaturePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select &quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="587.2,3648.8" sap2010:WorkflowViewState.IdRef="FormActivity_8" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+                  <ufa:FormActivity.Body>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="550.4,3522.4" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="njl:JObject" Name="formObject" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_8" JsonObject="[formObject]" JsonString="[formString]" />
+                        <Assign sap:VirtualizedContainerService.HintSize="508.8,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[tempFile]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[tempPath + docName + ".docx"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tempFile]" sap:VirtualizedContainerService.HintSize="508.8,3229.6" sap2010:WorkflowViewState.IdRef="WordApplicationScope_8">
+                          <p:WordApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WordDocument">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,3120" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="[tempPath + docName + &quot;.pdf&quot;]" Name="finalFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_74" Replace="[formObject(&quot;teacher&quot;).ToString]" ReplaceAll="True" Search="&lt;NUME-PROF&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_75" Replace="[surname + &quot; &quot; + firstname]" ReplaceAll="True" Search="&lt;NUME&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_76" Replace="[univYear]" ReplaceAll="True" Search="&lt;AN-UNIV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_77" Replace="[year]" ReplaceAll="True" Search="&lt;AN&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_78" Replace="[domain]" ReplaceAll="True" Search="&lt;DOMENIU&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_79" Replace="[financeType]" ReplaceAll="True" Search="&lt;FORMA-FIN&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_80" Replace="[studyForm]" ReplaceAll="True" Search="&lt;FORMA-INV&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_81" Replace="[grupa]" ReplaceAll="True" Search="&lt;GRUPA&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_82" Replace="[formObject(&quot;mat1&quot;).ToString]" ReplaceAll="True" Search="&lt;MATERIE1&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_83" Replace="[formObject(&quot;mat2&quot;).ToString]" ReplaceAll="True" Search="&lt;MATERIE2&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_84" Replace="[formObject(&quot;grade&quot;).ToString]" ReplaceAll="True" Search="&lt;NOTA&gt;" />
+                                <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_85" Replace="[DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="&lt;DATA&gt;" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_11" PictureAltText="Student-Signature" PicturePath="[formObject(&quot;studentSignaturePath&quot;).ToString]" />
+                                <p:WordReplacePicture DisplayName="Replace Picture" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WordReplacePicture_12" PictureAltText="Teacher-Signature" PicturePath="[formObject(&quot;teacherSignaturePath&quot;).ToString]" />
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[finalFile]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[tempPath + docName + ".pdf"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[finalFile]" sap:VirtualizedContainerService.HintSize="433.6,111.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_8" />
+                              </Sequence>
+                            </ActivityAction>
+                          </p:WordApplicationScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </p:WordApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ufa:FormActivity.Body>
+                  <ufa:FormActivity.DelayBody>
+                    <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                      <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_8" />
+                    </ActivityAction>
+                  </ufa:FormActivity.DelayBody>
+                  <ufa:FormActivity.FormFieldsCollection>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ufa:FormActivity.FormFieldsCollection>
+                </ufa:FormActivity>
+              </Sequence>
+            </FlowStep>
+          </FlowSwitch>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+          <x:Reference>__ReferenceID4</x:Reference>
+          <FlowStep x:Name="__ReferenceID6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">310,35.6</av:Point>
+                <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">410,104.4 410,134.4 470,134.4 470,226.4</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[tempFile]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[tempPath + docName + ".docx"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:CopyFile ContinueOnError="{x:Null}" Destination="[tempFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="CopyFile_8" Overwrite="True" Path="[docPath]" />
+            </Sequence>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID5</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="375.2,404.8" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="errorMessage" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[errorMessage]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["Could not fill in document due to : "  + Exception.Message.ToString + " at " + Exception.Source.ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="ErrorMessage" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_19" Text="[errorMessage]" />
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="robots\utils\LogError.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="errorMessage">[errorMessage]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
