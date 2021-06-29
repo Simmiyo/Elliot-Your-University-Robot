@@ -12,7 +12,7 @@ from ui.design.robotMaterialsFrame import Ui_materialsFrame
 from ui.logic.robotAskTokenPasswordDialogLogic import AskTokenPassLogic
 from ui.util.logging_utils import log_exception
 from ui.util.robots import getRobotPath
-from ui.util.workers import CallUipathRobotWorker, GetMoodleCoursesList
+from ui.util.workers import CallUipathRobotWorker, GetMoodleCoursesList, formatUiPathInput
 
 
 class MaterialsFrameLogic(QFrame, Ui_materialsFrame):
@@ -45,9 +45,10 @@ class MaterialsFrameLogic(QFrame, Ui_materialsFrame):
             self.parent.setCursor(QtCore.Qt.ArrowCursor)
 
     def getToken(self):
-        robotCommand = "cmd /c " + getRobotPath() + " execute --file " + r".\uipath\Main.xaml " + \
-                       r"--input " + "\"" + str({"robotType": "materials-extra", "platform": "moodle",
-                                                 "tokenFile": r'"{}"'.format(abspath(r'.\data\token.txt'))})
+        robotFile = r'"{}"'.format(abspath(r".\uipath\Main.xaml"))
+        robotCommand = "cmd /c " + getRobotPath() + " execute --file " + robotFile + \
+                       r" --input " + "\"" + formatUiPathInput({"robotType": "materials-extra", "platform": "moodle",
+                                                 "tokenFile": r'"{}"'.format(abspath(r'.\data\token.txt'))}) + "\""
         process = Popen(robotCommand, stdout=PIPE, stderr=PIPE, creationflags=CREATE_NO_WINDOW)
         stdout, stderr = process.communicate()
         if len(stderr.decode("utf-8")) == 0:
