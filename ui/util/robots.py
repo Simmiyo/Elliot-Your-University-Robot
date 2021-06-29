@@ -15,15 +15,15 @@ def getUipathVersionNumber(filename: str):
 
 def getRobotPath():
     try:
-        uiPathApp = os.environ['UIPATH_USER_SERVICE_PATH']
         # intra in environment variables (care e dict) si retine calea specificata la cheia data
+        uiPathApp = os.environ['UIPATH_USER_SERVICE_PATH']
         netPos = uiPathApp.find(r"\net")
         return uiPathApp[:netPos] + r"\UiRobot.exe"
     except KeyError:
         currentUser = os.environ['USERPROFILE']
         uiPath = currentUser + r"\AppData\Local\UiPath"
         version = ".".join([str(x) for x in getUipathVersionNumber(uiPath + r"\UiPath.Studio.exe")])
-        if version[-1] == '0':
+        if version[-1] == '0': # scap de 0 din versiuni tip n.m.0
             version = version.rsplit(".", 1)[0]
         with os.scandir(uiPath) as dirs:
             for fold in dirs:

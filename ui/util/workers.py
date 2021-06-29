@@ -12,7 +12,7 @@ from ui.util.logging_utils import log_exception
 from ui.util.robots import getRobotPath
 
 
-def formatUiPathInput(arguments): # redenumire foldere/fisiere cu spatii
+def formatUiPathInput(arguments):        # redenumire foldere/fisiere cu spatii
     arguments = json.dumps(arguments)
     formattedInput = ''
     for i in range(len(arguments)):
@@ -20,7 +20,6 @@ def formatUiPathInput(arguments): # redenumire foldere/fisiere cu spatii
             formattedInput += '\''
         else:
             formattedInput += arguments[i]
-    print(formattedInput)
     return formattedInput
 
 
@@ -86,7 +85,8 @@ class GetGradesWorker(QtCore.QObject):
                 response = requests.get('http://localhost:3000/relations?userName=' + student['Surname'] + "-"
                                         + student['FirstName'])
                 if response.status_code == 200:
-                    # [0] i.e. iau primul element al listei de dictionare (va fi doar unul oricum) & val din dict la cheia grId
+                    # [0] i.e. iau primul element al listei de dictionare (va fi doar unul oricum) & val din dict la
+                    # cheia grId
                     self._gradesId = json.loads(response.content.decode('utf-8'))[0]['gradesId']
                 else:
                     canContinue = False
@@ -146,8 +146,8 @@ class GetMoodleCoursesList(QtCore.QObject):
         try:
             with open('./data/StudentDataJSON.json', 'r', encoding='utf-8') as jFile:
                 username = json.load(jFile)['EmailAddress']
-            # command = [f".\\util\\moodle-api-request.exe", "-type refresh", f"-uname {username}", f"-cfile {self.csvStore}",
-            #            f"-log {abspath(r'./logs/go.log')}"]
+            # command = [f".\\util\\moodle-api-request.exe", "-type refresh", f"-uname {username}", f"-cfile {
+            # self.csvStore}", f"-log {abspath(r'./logs/go.log')}"]
             logFile = r'"{}"'.format(abspath('./logs/go.log'))
             if self._token is None:  # token salvat (criptat) si dau comanda cu calea fisierului sau si parola
                 # primul executabil
@@ -158,12 +158,12 @@ class GetMoodleCoursesList(QtCore.QObject):
                 # command += [f"-tval {self._token}"]
                 command = f"./util/moodle-api-request.exe -type refresh -tval {self._token} -uname {username} " \
                           f"-cfile {self.csvStore} -log {logFile}"
-            print(command)
-            returnCode = Popen(command, stdout=PIPE, stderr=PIPE, shell=True).wait()
-            # stdout, stderr = returnCode.communicate()
-            # print(stdout.decode('utf-8'))
-            # print(stderr.decode('utf-8'))
-            # print(returnCode.returncode)
+            #print(command)
+            returnCode = Popen(command, stdout=PIPE, stderr=PIPE).wait()
+            #stdout, stderr = returnCode.communicate()
+            #print(stdout.decode('utf-8'))
+            #print(stderr.decode('utf-8'))
+            #print(returnCode.returncode)
             # executabilul returneaza codul 0 daca totul a mers bine, 3 daca parola e gresita si alte numere pt alte sit
             self.finished.emit(returnCode)
         except Exception as e:
@@ -175,7 +175,7 @@ class SignalTokenExpire(QtCore.QObject):  # clasa workerilor care trimit semnal 
     finished = QtCore.pyqtSignal()
 
     def __init__(self, tokenExpTime=None):
-        super(SignalTokenExpire, self).__init__()  # constructor baza QObject
+        super(SignalTokenExpire, self).__init__()
         self.tokenExpTime = tokenExpTime
 
     # odata pornit, workerul doarme timpul param si apoi emite finished
@@ -192,21 +192,21 @@ class CallUipathRobotWorker(QtCore.QObject):
         self._args = args
 
     def run(self):
+        # UiRobot.exe
         robotPath = getRobotPath()  # r'"{}"'.format()
         robotFile = r'"{}"'.format(abspath(r".\uipath\Main.xaml"))
         robotCommand = "cmd /c " + robotPath + " execute --file " + robotFile + " --input " + "\"" + formatUiPathInput(
             self._args) + "\""  # comanda scrisa in command line
-        print(robotCommand)
-        # PIPE teava intre procese (fizic e un fisier special creat de os)
+        # print(robotCommand)
         robot = Popen(robotCommand, stdout=PIPE, stderr=PIPE, creationflags=CREATE_NO_WINDOW)  # creez proces extern
         stdout, stderr = robot.communicate()  # activez proces extern
         if stderr:
-            print("Robot Error: ", stderr.decode('utf-8'))
+            # print("Robot Error: ", stderr.decode('utf-8'))
             err = stderr.decode('utf-8')
             with open('./logs/uipath.log', 'a', encoding='utf-8') as logFile:
                 logFile.write(f" {datetime.datetime.now()} - {err} \n")
         if stdout:
-            print("Robot Output: " + stdout.decode('utf-8'))
+            # print("Robot Output: " + stdout.decode('utf-8'))
             out = json.loads(stdout.decode('utf-8'))['robotSuccess']
             self.finished.emit(out)
         else:

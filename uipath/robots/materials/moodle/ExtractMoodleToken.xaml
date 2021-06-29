@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>856.8,1408.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>896,1408.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractMoodleToken_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -597,7 +597,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InputDialog>
-                <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[&quot;-s &quot; + extractedToken  + &quot; -p &quot; + storePassword  + &quot; -f &quot; + tokenStorePath]" DisplayName="CryptPassEXE" FileName="[Environment.CurrentDirectory.Replace(&quot;uipath&quot;, &quot;util&quot;) + &quot;\encrypt.exe&quot;]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+                <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[&quot;-s &quot; + extractedToken  + &quot; -p &quot; + storePassword  + &quot; -f &quot; + tokenStorePath + &quot; -log ../logs/go.log&quot;]" DisplayName="CryptPassEXE" FileName="[Environment.CurrentDirectory.Replace(&quot;uipath&quot;, &quot;util&quot;) + &quot;\encrypt.exe&quot;]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
               </Sequence>
             </If.Then>
           </If>

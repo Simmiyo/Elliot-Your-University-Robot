@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>856.8,701.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>896,701.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetMaterialsExtra_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,11 +116,17 @@
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ExtractMoodleToken" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="robots\materials\moodle\ExtractMoodleToken.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ExtractMoodleToken" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="robots\materials\moodle\ExtractMoodleToken.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:String" x:Key="extractedToken">[extractedToken]</OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="tokenStorePath">[tokenStorePath]</InArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">[robotSuccess]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="extractedToken">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="extractedToken" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="tokenStorePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="tokenStorePath" />
+            </InArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">
+              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="robotSuccess" />
+            </OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -136,14 +142,10 @@
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetTeamsCoursesList" sap:VirtualizedContainerService.HintSize="372.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="robots\materials\teams\GetTeamsCoursesList.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetTeamsCoursesList" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="robots\materials\teams\GetTeamsCoursesList.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="coursesFilePath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="coursesFilePath" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">
-              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="robotSuccess" />
-            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="coursesFilePath">[coursesFilePath]</InArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="robotSuccess">[robotSuccess]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">

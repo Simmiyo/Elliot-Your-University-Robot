@@ -47,10 +47,10 @@ class MaterialsFrameLogic(QFrame, Ui_materialsFrame):
     def getToken(self):
         robotCommand = "cmd /c " + getRobotPath() + " execute --file " + r".\uipath\Main.xaml " + \
                        r"--input " + "\"" + str({"robotType": "materials-extra", "platform": "moodle",
-                                                 "tokenStorePath": r'"{}"'.format(abspath(r'.\data\token.txt'))})
+                                                 "tokenFile": r'"{}"'.format(abspath(r'.\data\token.txt'))})
         process = Popen(robotCommand, stdout=PIPE, stderr=PIPE, creationflags=CREATE_NO_WINDOW)
         stdout, stderr = process.communicate()
-        if stderr is None:
+        if len(stderr.decode("utf-8")) == 0:
             token = json.loads(stdout.decode('utf-8', 'ignore'))['extractedToken']
             try:
                 self.thread = QtCore.QThread()
