@@ -69,7 +69,7 @@ class SignInDialogLogic(QDialog, Ui_SignInDialog):
                 self.accept()
             else:
                 _ = QMessageBox.warning(self, 'Error!', 'Wrong user or password!')
-                self.signinButton.setEnabled(True)   # debolcare butoane ca sa poti introduce iar user pass
+                self.signinButton.setEnabled(True)   # deblocare butoane ca sa poti introduce iar user pass
                 self.cancelButton.setEnabled(True)
         except Exception as e:    # e.g. nu i pornit serverul
             self.signinButton.setEnabled(True)

@@ -2,7 +2,7 @@ import csv
 import json
 from os.path import abspath
 from pathlib import Path
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, CREATE_NO_WINDOW
 
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
@@ -47,14 +47,14 @@ class MaterialsFrameLogic(QFrame, Ui_materialsFrame):
     def getToken(self):
         robotCommand = "cmd /c " + getRobotPath() + " execute --file " + r".\uipath\Main.xaml " + \
                        r"--input " + "\"" + str({"robotType": "materials-extra", "platform": "moodle",
-                                                 "tokenStorePath": abspath(r'.\data\token.txt')})
-        process = Popen(robotCommand, stdout=PIPE, stderr=PIPE)
+                                                 "tokenStorePath": r'"{}"'.format(abspath(r'.\data\token.txt'))})
+        process = Popen(robotCommand, stdout=PIPE, stderr=PIPE, creationflags=CREATE_NO_WINDOW)
         stdout, stderr = process.communicate()
         if stderr is None:
             token = json.loads(stdout.decode('utf-8', 'ignore'))['extractedToken']
             try:
                 self.thread = QtCore.QThread()
-                self.worker = GetMoodleCoursesList(abspath(r'.\data\coursesMoodle.csv'), token)
+                self.worker = GetMoodleCoursesList(r'"{}"'.format(abspath(r'.\data\coursesMoodle.csv')), token)
                 self.worker.moveToThread(self.thread)
 
                 self.thread.started.connect(self.worker.run)
